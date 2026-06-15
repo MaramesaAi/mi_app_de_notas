@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de notas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 App de notas</h1>
+            <p class="subtitle">Escribí lo que necesites recordar</p>
+        </header>
+
+        <main>
+            <div class="note-area">
+                <textarea
+                    id="nota"
+                    placeholder="Escribí tu nota acá..."
+                    autofocus
+                ></textarea>
+            </div>
+
+            <div class="actions">
+                <button id="btn-limpiar" class="btn btn-secondary">
+                    🗑️ Limpiar
+                </button>
+                <span class="char-count" id="contador">0 caracteres</span>
+            </div>
+        </main>
+
+        <footer>
+            <p>Hecho con ❤️ — tus notas se borran al cerrar la pestaña</p>
+        </footer>
+    </div>
+
+    <script>
+        const textarea = document.getElementById('nota');
+        const contador = document.getElementById('contador');
+        const btnLimpiar = document.getElementById('btn-limpiar');
+
+        textarea.addEventListener('input', () => {
+            const chars = textarea.value.length;
+            contador.textContent = chars === 1 ? '1 carácter' : `${chars} caracteres`;
+        });
+
+        btnLimpiar.addEventListener('click', () => {
+            textarea.value = '';
+            contador.textContent = '0 caracteres';
+            textarea.focus();
+        });
+    </script>
+</body>
+</html>
